@@ -8,19 +8,20 @@ jobs:
   aws_cdk:
     runs-on: ubuntu-latest
     steps:
-
-      # - name: cdk diff
-      #   uses: youyo/aws-cdk-github-actions@v2
-      #   with:
-      #     cdk_subcommand: 'diff'
-      #     cdk_stack: 'AwsPipelineStack'
-      #     actions_comment: false
-      #   env:
-      #     AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-      #     AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      #     AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
       - name: Checkout repository
         uses: actions/checkout@v2
+
+      - name: cdk diff
+        uses: youyo/aws-cdk-github-actions@v2
+        with:
+          cdk_subcommand: 'diff'
+          cdk_stack: 'AwsPipelineStack'
+          cdk_version: '2.150.0'
+          actions_comment: false
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
 
       - name: cdk synth
         uses: youyo/aws-cdk-github-actions@v2
@@ -43,7 +44,6 @@ jobs:
           cdk_stack: 'AwsPipelineStack'
           cdk_version: '2.150.0'
           cdk_args: '--require-approval never'
-          working_dir: './aws-pipeline'
           actions_comment: false
           debug_log: true
         env:
