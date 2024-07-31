@@ -25,6 +25,7 @@ jobs:
         with:
           cdk_subcommand: 'synth'
           cdk_stack: 'AwsPipelineStack'
+          working_dir: './aws-pipeline'
           cdk_version: '2.150.0'
           debug_log: true
         env:
