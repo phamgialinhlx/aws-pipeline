@@ -39,6 +39,7 @@ jobs:
           cdk_stack: 'AwsPipelineStack'
           cdk_version: '2.150.0'
           cdk_args: '--require-approval never'
+          working_dir: './aws-pipeline'
           actions_comment: false
           debug_log: true
         env:
