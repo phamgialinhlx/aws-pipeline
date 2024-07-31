@@ -25,7 +25,7 @@ jobs:
         with:
           cdk_subcommand: 'synth'
           cdk_stack: 'AwsPipelineStack'
-          cdk_version: '1.16.2'
+          cdk_version: '2.150.0'
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
@@ -36,6 +36,7 @@ jobs:
         with:
           cdk_subcommand: 'deploy'
           cdk_stack: 'AwsPipelineStack'
+          cdk_version: '2.150.0'
           cdk_args: '--require-approval never'
           actions_comment: false
         env:
